@@ -1,21 +1,18 @@
-extern crate rand;
-
 use std::fs::File;
 use std::io::Read;
 use std::env;
 use std::path::PathBuf;
-use rand::random;
 use std::collections::HashMap;
 
 fn main() {
     // check if debug
     let args: Vec<String> = env::args().collect();
-    let debug = if args.len() > 1 && args[1] == "debug" { true } else { false };
+    if args.len() == 1 { panic!("File not found") };
     // find test files
     let mut filepath = PathBuf::from(env!("CARGO_MANIFEST_DIR"));
     filepath.push("resources/");
-    filepath.push(if debug { "debug.txt" } else { "rosalind_ba2b.txt" });
-    let sets = if debug { 7 } else { 1 };
+    filepath.push(args[1].clone());
+    let sets = 1;
 
     let mut f = File::open(filepath).unwrap();
     let mut data = String::new();
@@ -24,16 +21,17 @@ fn main() {
     let mut lines_iter = data.lines();
 
     for _ in 0..sets {
-        let (k, strings) = get_data(&mut lines_iter, debug);
+        let strings = get_data(&mut lines_iter);
         let best_kmer = naive_find_motif(&strings, k);
         println!("{}", best_kmer);
     }
 }
 
-fn get_data(lines_iter: &mut std::str::Lines, debug: bool) -> (i32, Vec<String>) {
+fn get_data(lines_iter: &mut std::str::Lines) -> (i32, Vec<String>) {
     let mut k_d = lines_iter.next().expect("Read k_d").split_whitespace();
     let k = k_d.next().expect("Parse k").parse::<i32>().unwrap();
     let mut data = Vec::new();
+    let debug = true;
     if debug {
         let d = k_d.next().expect("Parse d").parse::<i32>().unwrap();
         for _ in 0..d {
