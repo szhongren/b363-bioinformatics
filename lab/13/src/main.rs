@@ -76,12 +76,16 @@ fn naive_find_motif(strings: &Vec<String>, k: i32) -> String {
 
 fn gen_all_kmers(k: i32) -> Vec<String> {
     let mut output: Vec<String> = Vec::new();
+    // just converts the literal list of chars into a vector of strings
     let nucleotides = ["A", "C", "G", "T"].iter().map(|x| x.to_string()).collect();
     if k == 0 {
+        // return empty list
         return output;
     } else if k == 1 {
+        // not needed technically, just returns the list of 1 nucleotides
         return nucleotides;
     } else {
+        // else concat each nucleotide to each sequence we have so far
         for suffix in gen_all_kmers(k - 1) {
             for nt in &nucleotides {
                 let new = suffix.clone() + &nt;

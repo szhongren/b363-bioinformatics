@@ -2,7 +2,6 @@ use std::fs::File;
 use std::io::Read;
 use std::env;
 use std::path::PathBuf;
-use std::collections::HashMap;
 
 fn main() {
     // check if debug
@@ -12,7 +11,6 @@ fn main() {
     let mut filepath = PathBuf::from(env!("CARGO_MANIFEST_DIR"));
     filepath.push("resources/");
     filepath.push(args[1].clone());
-    let sets = 1;
 
     let mut f = File::open(filepath).unwrap();
     let mut data = String::new();
@@ -20,46 +18,64 @@ fn main() {
 
     let mut lines_iter = data.lines();
 
-    for _ in 0..sets {
-        let strings = get_data(&mut lines_iter);
-        let best_kmer = naive_find_motif(&strings, k);
-        println!("{}", best_kmer);
-    }
+    let strings = get_data(&mut lines_iter);
+    let k = 10;
+    let seq_len = 500;
+    let d = if args[1] == "cha1.txt" { 3 } else { 4 };
+    let best_kmer = naive_find_motif(&strings, k, d, seq_len);
+    let best_indices = find_best_indices(best_kmer);
+
 }
 
-fn get_data(lines_iter: &mut std::str::Lines) -> (i32, Vec<String>) {
-    let mut k_d = lines_iter.next().expect("Read k_d").split_whitespace();
-    let k = k_d.next().expect("Parse k").parse::<i32>().unwrap();
+fn get_data(lines_iter: &mut std::str::Lines) -> Vec<String> {
     let mut data = Vec::new();
-    let debug = true;
-    if debug {
-        let d = k_d.next().expect("Parse d").parse::<i32>().unwrap();
-        for _ in 0..d {
-            data.push(lines_iter.next().expect("Read string").to_string());
+    let mut buf = Vec::new();
+    for (i, line) in lines_iter.enumerate() {
+        if i % 9 != 0 {
+            buf.push(line.to_string());
         }
-    } else {
-        data = lines_iter.map(|x| x.to_string()).collect();
     }
-    (k, data)
+    let mut strand = String::new();
+    for (i, line) in buf.into_iter().enumerate() {
+        strand = format!("{}{}", strand, line);
+        if i % 8 == 7 {
+            data.push(strand.clone());
+            strand = String::new();
+        }
+    }
+    data
 }
 
-fn naive_find_motif(strings: &Vec<String>, k: i32) -> String {
+fn find_best_indices(best_kmer: String) -> Vec<i32> {
+    println!("{}", best_kmer);
+    Vec::new()
+}
+
+fn naive_find_motif(strings: &Vec<String>, k: i32, d: i32, seq_len: usize) -> String {
     //! guaranteed to work, but slow since it runs in O(4^ktn) time
     let all_potential = gen_all_kmers(k);
     let mut best_profile = i32::max_value();
     let mut best_kmer = String::new();
-    for kmer in all_potential {
+    let mut total = 1;
+    for _ in 0..k {
+        total *= 4;
+    }
+    for (i, kmer) in all_potential.into_iter().enumerate() {
+        println!("{}/{} - {}", i, total, kmer);
         let mut profile = 0;
-        for seq in strings {
-            let mut best_hamming = i32::max_value();
-            for i in 0..&seq.len() - k as usize + 1 {
-                let hamming = hamming_distance(&String::from(&seq[i..i+k as usize]), &kmer);
+        for seq in strings.clone() {
+            let mut best_hamming = k + 2;
+            for i in 0..seq_len - k as usize + 1 {
+                let hamming = hamming_distance_with_d(&seq[i..i+k as usize], &kmer, d, k);
                 if hamming < best_hamming {
                     best_hamming = hamming;
                     // println!("{} - {}[{}], {}", &kmer, seq, i, best_hamming);
                 }
             }
             profile += best_hamming;
+            if profile >= best_profile {
+                continue;
+            }
         }
         if profile < best_profile {
             best_profile = profile;
@@ -95,6 +111,19 @@ fn hamming_distance(a: &String, b: &String) -> i32 {
     for (x, y) in a.chars().zip(b.chars()) {
         if x != y {
             distance += 1;
+        }
+    }
+    distance
+}
+
+fn hamming_distance_with_d(a: &str, b: &str, d: i32, k: i32) -> i32 {
+    let mut distance = 0;
+    for (x, y) in a.chars().zip(b.chars()) {
+        if x != y {
+            distance += 1;
+        }
+        if distance >= d {
+            return k + 1;
         }
     }
     distance
