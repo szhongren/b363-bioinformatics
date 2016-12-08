@@ -8,7 +8,7 @@
 19.py	lab/19/19.py	1;"	kind:file	line:1
 20.py	lab/20/20.py	1;"	kind:file	line:1
 21.py	lab/21/21.py	1;"	kind:file	line:1
-22..py	lab/22/22..py	1;"	kind:file	line:1
+22.py	lab/22/22.py	1;"	kind:file	line:1
 23.py	lab/23/23.py	1;"	kind:file	line:1
 24.py	lab/24/24.py	1;"	kind:file	line:1
 AAcids	lab/19/19.py	/^AAcids = ['A', 'C', 'G', 'T'] #['A', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'K', 'L', 'M', 'N', 'P', 'Q', 'R', 'S', 'T', 'V', 'W', 'Y']$/;"	kind:variable	line:5
@@ -22,8 +22,8 @@ a	lab/18/18.py	/^        a = f.readline().strip()$/;"	kind:variable	line:36
 a	lab/18/18.py	/^    a = f.readline()$/;"	kind:variable	line:44
 a	lab/19/19.py	/^  a = file.readline().strip()$/;"	kind:variable	line:115
 a	lab/20/20.py	/^  a = file.readline().strip()$/;"	kind:variable	line:84
-a	lab/22/22..py	/^  a = a.split(")(")$/;"	kind:variable	line:37
-a	lab/22/22..py	/^  a = file.readline().strip()$/;"	kind:variable	line:36
+a	lab/22/22.py	/^  a = a.split(")(")$/;"	kind:variable	line:37
+a	lab/22/22.py	/^  a = file.readline().strip()$/;"	kind:variable	line:36
 a	lab/23/23.py	/^  a = a.split("), (")$/;"	kind:variable	line:15
 a	lab/23/23.py	/^  a = file.readline().strip()$/;"	kind:variable	line:14
 adj_get	lab/24/24.py	/^def adj_get(i, j):$/;"	kind:function	line:11
@@ -40,8 +40,8 @@ backTrack	lab/18/18.py	/^def backTrack(C, X, Y, i, j):$/;"	kind:function	line:19
 blosum	lab/20/20.py	/^blosum = open("resources\/blosum62.txt")$/;"	kind:variable	line:66
 blosum62	lab/19/19.py	/^def blosum62(x):$/;"	kind:function	line:37
 breakpoint_count	lab/21/21.py	/^def breakpoint_count(permutation):$/;"	kind:function	line:3
-chromosome_to_cycle	lab/22/22..py	/^def chromosome_to_cycle(p):$/;"	kind:function	line:3
-colored_edges	lab/22/22..py	/^def colored_edges(genome):$/;"	kind:function	line:15
+chromosome_to_cycle	lab/22/22.py	/^def chromosome_to_cycle(p):$/;"	kind:function	line:3
+colored_edges	lab/22/22.py	/^def colored_edges(genome):$/;"	kind:function	line:15
 curr	lab/08/prob8.py	/^        curr = allKmers[i]$/;"	kind:variable	line:33
 curr	lab/08/prob8.py	/^    curr = ""$/;"	kind:variable	line:18
 currCount	lab/08/prob8.py	/^            currCount = 1$/;"	kind:variable	line:30
@@ -54,8 +54,8 @@ debug	lab/19/19.py	/^debug = False$/;"	kind:variable	line:104
 debug	lab/20/20.py	/^debug = False$/;"	kind:variable	line:62
 debug	lab/21/21.py	/^  debug = True$/;"	kind:variable	line:10
 debug	lab/21/21.py	/^debug = False$/;"	kind:variable	line:8
-debug	lab/22/22..py	/^  debug = True$/;"	kind:variable	line:27
-debug	lab/22/22..py	/^debug = False$/;"	kind:variable	line:25
+debug	lab/22/22.py	/^  debug = True$/;"	kind:variable	line:27
+debug	lab/22/22.py	/^debug = False$/;"	kind:variable	line:25
 debug	lab/23/23.py	/^  debug = True$/;"	kind:variable	line:5
 debug	lab/23/23.py	/^debug = False$/;"	kind:variable	line:3
 diag	lab/20/20.py	/^  diag = 2$/;"	kind:variable	line:9
@@ -72,8 +72,8 @@ file	lab/19/19.py	/^file = open("resources\/rosalind_ba5j.txt")$/;"	kind:variabl
 file	lab/20/20.py	/^file = open("resources\/rosalind_ba5l.txt")$/;"	kind:variable	line:77
 file	lab/21/21.py	/^  file = open("debug.txt")$/;"	kind:variable	line:16
 file	lab/21/21.py	/^file = open("rosalindba6b.txt")$/;"	kind:variable	line:13
-file	lab/22/22..py	/^  file = open("debug.txt")$/;"	kind:variable	line:32
-file	lab/22/22..py	/^file = open("rosalind_ba6h.txt")$/;"	kind:variable	line:29
+file	lab/22/22.py	/^  file = open("debug.txt")$/;"	kind:variable	line:32
+file	lab/22/22.py	/^file = open("rosalind_ba6h.txt")$/;"	kind:variable	line:29
 file	lab/23/23.py	/^  file = open("debug.txt")$/;"	kind:variable	line:10
 file	lab/23/23.py	/^file = open("rosalind_ba6i.txt")$/;"	kind:variable	line:7
 file	lab/24/24.py	/^  file = open("debug2.txt")$/;"	kind:variable	line:6
@@ -119,7 +119,8 @@ permutation	lab/21/21.py	/^  permutation = permutation[permutation.index('(') + 
 power	test.py	/^def power(s):$/;"	kind:function	line:1
 prob11.py	lab/11/prob11.py	1;"	kind:file	line:1
 prob8.py	lab/08/prob8.py	1;"	kind:file	line:1
-res	lab/22/22..py	/^  res = colored_edges(a)$/;"	kind:variable	line:43
+res	lab/22/22.py	/^  res = colored_edges(a)$/;"	kind:variable	line:43
+ret_suffix_array	hw/hw5/test.py	/^def ret_suffix_array(word):$/;"	kind:function	line:1
 right	lab/20/20.py	/^  right = 0$/;"	kind:variable	line:7
 score	lab/19/19.py	/^score = blosum62(map(blosum62, weights))$/;"	kind:variable	line:40
 score	lab/20/20.py	/^score = key_to_val(map(key_to_val, weights))$/;"	kind:variable	line:75
@@ -130,8 +131,8 @@ sets	lab/19/19.py	/^sets = 1$/;"	kind:variable	line:109
 sets	lab/20/20.py	/^sets = 1$/;"	kind:variable	line:78
 sets	lab/21/21.py	/^  sets = 3$/;"	kind:variable	line:17
 sets	lab/21/21.py	/^sets = 1$/;"	kind:variable	line:14
-sets	lab/22/22..py	/^  sets = 2$/;"	kind:variable	line:33
-sets	lab/22/22..py	/^sets = 1$/;"	kind:variable	line:30
+sets	lab/22/22.py	/^  sets = 2$/;"	kind:variable	line:33
+sets	lab/22/22.py	/^sets = 1$/;"	kind:variable	line:30
 sets	lab/23/23.py	/^  sets = 2$/;"	kind:variable	line:11
 sets	lab/23/23.py	/^sets = 1$/;"	kind:variable	line:8
 sigma	lab/20/20.py	/^sigma = 5$/;"	kind:variable	line:13
@@ -140,9 +141,10 @@ sys	lab/18/18.py	/^import sys$/;"	kind:namespace	line:2
 sys	lab/19/19.py	/^import sys$/;"	kind:namespace	line:1
 sys	lab/20/20.py	/^import sys$/;"	kind:namespace	line:1
 sys	lab/21/21.py	/^import sys$/;"	kind:namespace	line:1
-sys	lab/22/22..py	/^import sys$/;"	kind:namespace	line:1
+sys	lab/22/22.py	/^import sys$/;"	kind:namespace	line:1
 sys	lab/23/23.py	/^import sys$/;"	kind:namespace	line:1
 sys	lab/24/24.py	/^import sys$/;"	kind:namespace	line:1
+test.py	hw/hw5/test.py	1;"	kind:file	line:1
 test.py	test.py	1;"	kind:file	line:1
 weights	lab/19/19.py	/^weights = [$/;"	kind:variable	line:7
 weights	lab/20/20.py	/^weights = [map(int, blosum.readline()[1:].split()) for _ in range(len(AAcids))]$/;"	kind:variable	line:68
